@@ -9,12 +9,14 @@ metadata:
     env: {{ .Values.env }}
 spec:
   ports:
-  - port: 80
+  - port: 9000
     targetPort: 80
   selector:
     app: ui
     tier: app
     env: {{ .Values.env }}
+  externalIPs:
+  - 172.21.110.170
 ---
 # requires service account to be created
 apiVersion: extensions/v1beta1
@@ -61,3 +63,17 @@ spec:
             value: {{ template "api.uri" . }}
           - name: ECOSYSTEM_STORE
             value: {{ template "store.uri" . }}
+        # volumeMounts:
+        #   - mountPath: /etc/nginx/nginx.conf
+        #     name: nginx-config
+        #     subPath: nginx.conf
+        #   - mountPath: /usr/share/nginx/html/index.html
+        #     name: sdui-index-html
+        #     subPath: index.html
+      # volumes:
+      #   - name: nginx-config
+      #     configMap:
+      #       name: sdui-nginx-config
+      #   - name: sdui-index-html
+      #     configMap:
+      #       name: sdui-index-html

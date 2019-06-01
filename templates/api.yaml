@@ -9,12 +9,14 @@ metadata:
     tier: svc
 spec:
   ports:
-  - port: 80
+  - port: 9001
     targetPort: 80
   selector:
     app: api
     env: {{ .Values.env }}
     tier: app
+  externalIPs:
+  - 172.21.110.170
 ---
 # requires service account to be created
 apiVersion: extensions/v1beta1
