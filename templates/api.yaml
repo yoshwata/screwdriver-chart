@@ -9,14 +9,14 @@ metadata:
     tier: svc
 spec:
   ports:
-  - port: 9001
+  - port: 80
     targetPort: 80
   selector:
     app: api
     env: {{ .Values.env }}
     tier: app
-  externalIPs:
-  - 172.21.110.170
+  # externalIPs:
+  # - 172.21.110.170
 ---
 # requires service account to be created
 apiVersion: extensions/v1beta1
@@ -50,17 +50,19 @@ spec:
       serviceAccount: sd-buildbot
       containers:
       - name: screwdriver-api
+        command: ["sleep"]
+        args: ["3600000"]
         image: {{ .Values.api.image }}
         ports:
         - containerPort: 80
           protocol: TCP
         # Validate that the service is started
-        livenessProbe:
-          httpGet:
-            path: /v4/status
-            port: 80
-          initialDelaySeconds: 15
-          timeoutSeconds: 1
+        # livenessProbe:
+        #   httpGet:
+        #     path: /v4/status
+        #     port: 80
+        #   initialDelaySeconds: 15
+        #   timeoutSeconds: 1
         # Environment variables that point to your secrets in your secrets.yaml
         env:
           - name: LAUNCH_IMAGE

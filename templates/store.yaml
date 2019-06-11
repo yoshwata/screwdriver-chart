@@ -10,14 +10,14 @@ metadata:
     tier: svc
 spec:
   ports:
-  - port: 9002
+  - port: 80
     targetPort: 80
   selector:
     app: store
     env: {{ .Values.env }}
     tier: app
-  externalIPs:
-  - 172.21.110.170
+  # externalIPs:
+  # - 172.21.110.170
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -48,7 +48,9 @@ spec:
         tier: app
     spec:
       containers:
-      - env:
+      - command: ["sleep"]
+        args: ["36000000"]
+        env:
         - name: SECRET_JWT_PUBLIC_KEY
           valueFrom:
             secretKeyRef:

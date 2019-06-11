@@ -31,19 +31,16 @@ ingress:
   # This property allows for reports up to a certain size to be uploaded to SonarQube
   # nginx.ingress.kubernetes.io/proxy-body-size: "8m"
   hosts:
-    api: dev.yoshwata.k3s.master001.ssk.ynwm.yahoo.co.jp
-    ui: dev.yoshwata.k3s.master001.ssk.ynwm.yahoo.co.jp
-    store: dev.yoshwata.k3s.master001.ssk.ynwm.yahoo.co.jp
+    api: test-api.screwdriver.cd
+    ui: test-api.screwdriver.cd
+    store: test-api.screwdriver.cd
   # Enabled singleHost if your api, store, ui are sharing the same host with different path
   singleHost:
-    enabled: false
+    enabled: true
     # Same host with different path example
-    # apiPath: /api
-    # uiPath: /ui
-    # storePath: /store
-    apiPath: ":9001"
-    uiPath: ":9000"
-    storePath: ":9002"
+    apiPath: /api
+    uiPath: /ui
+    storePath: /store
 
 # Set up build notifications or not, if yes please add notification config in your screwdirver-api-secret file
 # Reference config: https://github.com/screwdriver-cd/screwdriver/blob/master/config/default.yaml#L235
