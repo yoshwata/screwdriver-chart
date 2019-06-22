@@ -41,9 +41,9 @@ ingress:
     # apiPath: /api
     # uiPath: /ui
     # storePath: /store
-    apiPath: ""
-    uiPath: ""
-    storePath: ""
+    apiPath: ":9001"
+    uiPath: ":9000"
+    storePath: ":9002"
 
 # Set up build notifications or not, if yes please add notification config in your screwdirver-api-secret file
 # Reference config: https://github.com/screwdriver-cd/screwdriver/blob/master/config/default.yaml#L235
