@@ -51,16 +51,16 @@ notifications:
   enabled: false
 
 api:
-  image: screwdrivercd/screwdriver:v0.5.486
+  image: screwdrivercd/screwdriver:latest
   replicas: 1
 
 ui:
-  image: screwdrivercd/ui:v1.0.344
+  image: screwdrivercd/ui:latest
   avatarHost: "*.githubusercontent.com"
   replicas: 1
 
 store:
-  image: screwdrivercd/store:v3.3.5
+  image: screwdrivercd/store:latest
   replicas: 1
   # if s3 is not enabled, will use pod's memory to store logs, artifacts and that't non-persistent
   s3:
@@ -71,12 +71,12 @@ store:
 
 launcher:
   image: screwdrivercd/launcher
-  version: v5.0.30
+  version: latest
 
 # Enable queue feature or not, this will bring up a queue-worker pod and a redis pod
 queue:
   enabled: false
-  image: screwdrivercd/queue-worker:v2.2.3
+  image: screwdrivercd/queue-worker:latest
 
 # Queue for screwdriver
 # Please refer to https://github.com/helm/charts/tree/master/stable/redis for more configurations
