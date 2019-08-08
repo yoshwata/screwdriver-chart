@@ -11,6 +11,10 @@ https: false
 rbac:
   enabled: false
 
+image:
+    # repository: yoshwata/screwdrivercd_screwdriver
+  tag: 2bbd73d-dirty
+
 nginx:
   # If your k8s cluster does not use nginx as Load Balancer, set it to false
   enabled: true

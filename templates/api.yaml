@@ -52,7 +52,7 @@ spec:
       serviceAccount: sd-buildbot
       containers:
       - name: screwdriver-api
-        image: {{ .Values.api.image }}
+        image: "docker.io/yoshwata/screwdrivercd_screwdriver:{{ .Values.image.tag }}"
         ports:
         - containerPort: 80
           protocol: TCP
