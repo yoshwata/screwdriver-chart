@@ -12,7 +12,7 @@ rbac:
   enabled: false
 
 image:
-    # repository: yoshwata/screwdrivercd_screwdriver
+  repository: docker.io/yoshwata/screwdrivercd_screwdriver
   tag: 2bbd73d-dirty
 
 nginx:
