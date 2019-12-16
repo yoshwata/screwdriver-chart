@@ -33,21 +33,21 @@ spec:
       paths:
       - backend:
           serviceName: {{ .Values.env }}-sdui
-          servicePort: 80
+          servicePort: 9000
         path: /
   - host: {{ .Values.ingress.hosts.api }}
     http:
       paths:
       - backend:
           serviceName: {{ .Values.env }}-sdapi
-          servicePort: 80
+          servicePort: 9001
         path: /
   - host: {{ .Values.ingress.hosts.store }}
     http:
       paths:
       - backend:
           serviceName: {{ .Values.env }}-sdstore
-          servicePort: 80
+          servicePort: 9002
         path: /
   {{- end }}
   {{- if .Values.ingress.tls }}
