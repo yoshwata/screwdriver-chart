@@ -10,12 +10,16 @@ metadata:
     tier: svc
 spec:
   ports:
-  - port: 80
+  - port: 9003
     targetPort: 80
   selector:
     app: queue-service
     env: {{ .Values.env }}
     tier: app
+  {{ if .Values.api.externalIPs }}
+  externalIPs:
+  - {{ .Values.api.externalIPs }}
+  {{ end }}
 ---
 apiVersion: apps/v1
 kind: Deployment

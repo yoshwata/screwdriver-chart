@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-if grep -q "{{" example-scm-settings.json; then
-  echo Please configure example-scm-settings.json with real value!
+if grep -q "{{" scm-settings.json; then
+  echo Please configure scm-settings.json with real value!
   exit 1
 fi
 
@@ -23,7 +23,7 @@ for target in 'api' 'queue'; do
   sed -i.bak "s/{{${target}-jwtprivatekey}}/$privatekey/g" screwdriver-api-secrets.yaml
 done
 
-scmsettings=$(cat example-scm-settings.json | base64 | tr -d '\n')
+scmsettings=$(cat scm-settings.json | base64 | tr -d '\n')
 sed -i.bak "s/{{scmsettings}}/$scmsettings/g" screwdriver-api-secrets.yaml
 
 rm screwdriver-api-secrets.yaml.bak

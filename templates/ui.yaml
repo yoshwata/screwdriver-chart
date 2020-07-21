@@ -9,12 +9,16 @@ metadata:
     env: {{ .Values.env }}
 spec:
   ports:
-  - port: 80
+  - port: 9000
     targetPort: 80
   selector:
     app: ui
     tier: app
     env: {{ .Values.env }}
+  {{ if .Values.api.externalIPs }}
+  externalIPs:
+  - {{ .Values.api.externalIPs }}
+  {{ end }}
 ---
 # requires service account to be created
 apiVersion: apps/v1
